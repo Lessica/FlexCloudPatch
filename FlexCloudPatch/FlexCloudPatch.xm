@@ -27,6 +27,11 @@
 %end
 
 %group FlexCloudCommunity
+%subclass FLANotice : FLAResource // 公告子类
+- (NSString *)resourceAction {
+    return @"notice";
+}
+%end
 %hook FLInfoDashboardViewController
 - (NSString *)titleForView:(UIView *)view {
     if (view == MSHookIvar<UIView *>(self, "_newsView")) {
@@ -49,7 +54,25 @@
                           @"If you encounter a bug, or have any comments or feature suggestions, please contact me on Twitter at @punksomething.\n\n",
                           @"cheers,\nJohn Coates, creator of Flex"
                           ]; // 内置公告
-        [[self newsLabel] setText:tips];
+        __block id label = [self newsLabel];
+        if (label != nil && [label respondsToSelector:@selector(setText:)]) {
+            [label setText:tips];
+            // 请求远程公告
+            id req = [[%c(FLANotice) alloc] init];
+            [req loadWithParams:nil
+                        success:^(id resp) {
+                            if (resp != nil && [resp respondsToSelector:@selector(responseObject)]) {
+                                id resp_obj = [resp responseObject];
+                                if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
+                                    NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"result"];
+                                    if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
+                                        [label setText:remote_tips];
+                                    }
+                                }
+                            }
+                        }
+                        failure:nil];
+        }
     }
 }
 %end

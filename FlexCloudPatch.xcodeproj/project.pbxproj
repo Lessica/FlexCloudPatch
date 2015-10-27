@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0FAD4F971BDC789B001B531C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4F961BDC789B001B531C /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FA21BDC789B001B531C /* FlexCloudPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FA11BDC789B001B531C /* FlexCloudPatch.mm */; };
+		0FAD4FAD1BDC78AC001B531C /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4FAC1BDC78AC001B531C /* libsubstrate.dylib */; };
+		0FAD4FB01BDC79F3001B531C /* FLADevice.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4FAE1BDC79F3001B531C /* FLADevice.h */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FB11BDC79F3001B531C /* FLADevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FAF1BDC79F3001B531C /* FLADevice.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0FAD4FB41BDC7CA4001B531C /* NSData+encrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4FB21BDC7CA4001B531C /* NSData+encrypto.h */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FB51BDC7CA4001B531C /* NSData+encrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FB31BDC7CA4001B531C /* NSData+encrypto.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0FAD4FB81BDC7D1D001B531C /* NSString+encrypto.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4FB61BDC7D1D001B531C /* NSString+encrypto.h */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FB91BDC7D1D001B531C /* NSString+encrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FB71BDC7D1D001B531C /* NSString+encrypto.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0FAD4FBC1BDC8F51001B531C /* FLADeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4FBA1BDC8F51001B531C /* FLADeviceInfo.h */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FBD1BDC8F51001B531C /* FLADeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FBB1BDC8F51001B531C /* FLADeviceInfo.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+		0FAD4FC11BDC9064001B531C /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4FC01BDC9064001B531C /* IOKit.framework */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FC61BDC9971001B531C /* FLAClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FAD4FC41BDC9971001B531C /* FLAClient.h */; settings = {ASSET_TAGS = (); }; };
+		0FAD4FC71BDC9971001B531C /* FLAClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FC51BDC9971001B531C /* FLAClient.m */; settings = {ASSET_TAGS = (); COMPILER_FLAGS = "-fobjc-arc"; }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FAD4F931BDC789B001B531C /* FlexCloudPatch.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = FlexCloudPatch.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FAD4F961BDC789B001B531C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0FAD4F9C1BDC789B001B531C /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		0FAD4F9E1BDC789B001B531C /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		0FAD4F9F1BDC789B001B531C /* FlexCloudPatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlexCloudPatch-Prefix.pch"; sourceTree = "<group>"; };
+		0FAD4FA01BDC789B001B531C /* FlexCloudPatch.xm */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.objc; path = FlexCloudPatch.xm; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		0FAD4FA11BDC789B001B531C /* FlexCloudPatch.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FlexCloudPatch.mm; sourceTree = "<group>"; };
+		0FAD4FA61BDC789B001B531C /* FlexCloudPatch.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = FlexCloudPatch.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/FlexCloudPatch.plist; sourceTree = "<group>"; };
+		0FAD4FAC1BDC78AC001B531C /* libsubstrate.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsubstrate.dylib; path = ../../../../opt/theos/lib/libsubstrate.dylib; sourceTree = "<group>"; };
+		0FAD4FAE1BDC79F3001B531C /* FLADevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLADevice.h; sourceTree = "<group>"; };
+		0FAD4FAF1BDC79F3001B531C /* FLADevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLADevice.m; sourceTree = "<group>"; };
+		0FAD4FB21BDC7CA4001B531C /* NSData+encrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+encrypto.h"; sourceTree = "<group>"; };
+		0FAD4FB31BDC7CA4001B531C /* NSData+encrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+encrypto.m"; sourceTree = "<group>"; };
+		0FAD4FB61BDC7D1D001B531C /* NSString+encrypto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+encrypto.h"; sourceTree = "<group>"; };
+		0FAD4FB71BDC7D1D001B531C /* NSString+encrypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+encrypto.m"; sourceTree = "<group>"; };
+		0FAD4FBA1BDC8F51001B531C /* FLADeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLADeviceInfo.h; sourceTree = "<group>"; };
+		0FAD4FBB1BDC8F51001B531C /* FLADeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLADeviceInfo.m; sourceTree = "<group>"; };
+		0FAD4FC01BDC9064001B531C /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = FlexCloudPatch/Frameworks/IOKit.framework; sourceTree = "<group>"; };
+		0FAD4FC41BDC9971001B531C /* FLAClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAClient.h; sourceTree = "<group>"; };
+		0FAD4FC51BDC9971001B531C /* FLAClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAClient.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0FAD4F8F1BDC789B001B531C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FAD4FAD1BDC78AC001B531C /* libsubstrate.dylib in Frameworks */,
+				0FAD4F971BDC789B001B531C /* Foundation.framework in Frameworks */,
+				0FAD4FC11BDC9064001B531C /* IOKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0FAD4F881BDC789B001B531C = {
+			isa = PBXGroup;
+			children = (
+				0FAD4F981BDC789B001B531C /* FlexCloudPatch */,
+				0FAD4F951BDC789B001B531C /* Frameworks */,
+				0FAD4F941BDC789B001B531C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0FAD4F941BDC789B001B531C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4F931BDC789B001B531C /* FlexCloudPatch.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0FAD4F951BDC789B001B531C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4FAC1BDC78AC001B531C /* libsubstrate.dylib */,
+				0FAD4FC01BDC9064001B531C /* IOKit.framework */,
+				0FAD4F961BDC789B001B531C /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0FAD4F981BDC789B001B531C /* FlexCloudPatch */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4FAE1BDC79F3001B531C /* FLADevice.h */,
+				0FAD4FAF1BDC79F3001B531C /* FLADevice.m */,
+				0FAD4FBA1BDC8F51001B531C /* FLADeviceInfo.h */,
+				0FAD4FBB1BDC8F51001B531C /* FLADeviceInfo.m */,
+				0FAD4FC41BDC9971001B531C /* FLAClient.h */,
+				0FAD4FC51BDC9971001B531C /* FLAClient.m */,
+				0FAD4FB21BDC7CA4001B531C /* NSData+encrypto.h */,
+				0FAD4FB31BDC7CA4001B531C /* NSData+encrypto.m */,
+				0FAD4FB61BDC7D1D001B531C /* NSString+encrypto.h */,
+				0FAD4FB71BDC7D1D001B531C /* NSString+encrypto.m */,
+				0FAD4FA01BDC789B001B531C /* FlexCloudPatch.xm */,
+				0FAD4FA11BDC789B001B531C /* FlexCloudPatch.mm */,
+				0FAD4F991BDC789B001B531C /* Package */,
+				0FAD4F9D1BDC789B001B531C /* Supporting Files */,
+			);
+			path = FlexCloudPatch;
+			sourceTree = "<group>";
+		};
+		0FAD4F991BDC789B001B531C /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4F9A1BDC789B001B531C /* DEBIAN */,
+				0FAD4FA31BDC789B001B531C /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		0FAD4F9A1BDC789B001B531C /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4F9C1BDC789B001B531C /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		0FAD4F9D1BDC789B001B531C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4F9E1BDC789B001B531C /* PackageVersion.plist */,
+				0FAD4F9F1BDC789B001B531C /* FlexCloudPatch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0FAD4FA31BDC789B001B531C /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4FA41BDC789B001B531C /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		0FAD4FA41BDC789B001B531C /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4FA51BDC789B001B531C /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		0FAD4FA51BDC789B001B531C /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				0FAD4FA61BDC789B001B531C /* FlexCloudPatch.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0FAD4F901BDC789B001B531C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FAD4FC61BDC9971001B531C /* FLAClient.h in Headers */,
+				0FAD4FB01BDC79F3001B531C /* FLADevice.h in Headers */,
+				0FAD4FBC1BDC8F51001B531C /* FLADeviceInfo.h in Headers */,
+				0FAD4FB41BDC7CA4001B531C /* NSData+encrypto.h in Headers */,
+				0FAD4FB81BDC7D1D001B531C /* NSString+encrypto.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		0FAD4F921BDC789B001B531C /* FlexCloudPatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0FAD4FA91BDC789B001B531C /* Build configuration list for PBXNativeTarget "FlexCloudPatch" */;
+			buildPhases = (
+				0FAD4F8D1BDC789B001B531C /* ShellScript */,
+				0FAD4F8E1BDC789B001B531C /* Sources */,
+				0FAD4F8F1BDC789B001B531C /* Frameworks */,
+				0FAD4F901BDC789B001B531C /* Headers */,
+				0FAD4F911BDC789B001B531C /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexCloudPatch;
+			productName = FlexCloudPatch;
+			productReference = 0FAD4F931BDC789B001B531C /* FlexCloudPatch.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0FAD4F891BDC789B001B531C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				TargetAttributes = {
+					0FAD4F921BDC789B001B531C = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 0FAD4F8C1BDC789B001B531C /* Build configuration list for PBXProject "FlexCloudPatch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0FAD4F881BDC789B001B531C;
+			productRefGroup = 0FAD4F941BDC789B001B531C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0FAD4F921BDC789B001B531C /* FlexCloudPatch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0FAD4F8D1BDC789B001B531C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp-logos";
+		};
+		0FAD4F911BDC789B001B531C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0FAD4F8E1BDC789B001B531C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FAD4FC71BDC9971001B531C /* FLAClient.m in Sources */,
+				0FAD4FBD1BDC8F51001B531C /* FLADeviceInfo.m in Sources */,
+				0FAD4FA21BDC789B001B531C /* FlexCloudPatch.mm in Sources */,
+				0FAD4FB91BDC7D1D001B531C /* NSString+encrypto.m in Sources */,
+				0FAD4FB51BDC7CA4001B531C /* NSData+encrypto.m in Sources */,
+				0FAD4FB11BDC79F3001B531C /* FLADevice.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0FAD4FA71BDC789B001B531C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		0FAD4FA81BDC789B001B531C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		0FAD4FAA1BDC789B001B531C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zheng Wu (253D9QR4TP)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlexCloudPatch/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlexCloudPatch/FlexCloudPatch-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/theos/lib,
+				);
+				OTHER_LDFLAGS = "-Wl,-segalign,4000";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-objc-method-access";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = NO;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		0FAD4FAB1BDC789B001B531C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Zheng Wu (253D9QR4TP)";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlexCloudPatch/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlexCloudPatch/FlexCloudPatch-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/opt/theos/lib,
+				);
+				OTHER_LDFLAGS = "-Wl,-segalign,4000";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = "-Wno-objc-method-access";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = NO;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0FAD4F8C1BDC789B001B531C /* Build configuration list for PBXProject "FlexCloudPatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FAD4FA71BDC789B001B531C /* Debug */,
+				0FAD4FA81BDC789B001B531C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0FAD4FA91BDC789B001B531C /* Build configuration list for PBXNativeTarget "FlexCloudPatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0FAD4FAA1BDC789B001B531C /* Debug */,
+				0FAD4FAB1BDC789B001B531C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0FAD4F891BDC789B001B531C /* Project object */;
+}

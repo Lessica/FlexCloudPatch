@@ -1,0 +1,9 @@
+Package: com.darwindev.flexcloud
+Name: Flex 2 中文云端
+Version: 1.990-2
+Section: Tweaks
+Depends: firmware (>= 7.0), mobilesubstrate
+Architecture: iphoneos-arm
+Author: i_82 <i.82@me.com>
+Homepage: 82Flex <https://82flex.com>
+Maintainer: i_82 <i.82@me.com>

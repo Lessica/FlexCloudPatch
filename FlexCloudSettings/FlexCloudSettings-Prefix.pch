@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'FlexCloudSettings' target in the 'FlexCloudSettings' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

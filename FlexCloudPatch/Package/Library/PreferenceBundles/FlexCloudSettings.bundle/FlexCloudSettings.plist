@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>主开关</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.darwindev.FlexCloudSettings</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>启用</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>isStaticText</key>
+			<true/>
+			<key>label</key>
+			<string>附加功能</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<true/>
+			<key>defaults</key>
+			<string>com.darwindev.FlexCloudSettings</string>
+			<key>key</key>
+			<string>checkUpdates</string>
+			<key>label</key>
+			<string>检查更新与公告</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>copyUDID:</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>复制设备号</string>
+		</dict>
+		<dict>
+			<key>footerText</key>
+			<string>开启主开关，将启用 Flex 2 中文云端。
+关闭将恢复官方服务器的使用，重启 Flex 2 生效。
+云端设备号仅供复制使用，修改无效。</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>Flex 2 中文云端</string>
+</dict>
+</plist>

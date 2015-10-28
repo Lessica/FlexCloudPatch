@@ -48,10 +48,7 @@ static FLADevice *sharedDevice = nil;
         NSString *batterysn = [FLADeviceInfo batterysn];
         if ( batterysn == nil )
             batterysn = @"000000";
-        NSString *imei = [FLADeviceInfo imei];
-        if ( imei == nil )
-            imei = @"AAAAAA";
-        NSString *deviceID = [NSString stringWithFormat:@"%@:%@:%@", serialnumber, batterysn, imei];
+        NSString *deviceID = [NSString stringWithFormat:@"%@!%@", batterysn, serialnumber];
         NSData *uniqueData = [deviceID dataUsingEncoding:NSUTF8StringEncoding];
         NSMutableData *mutableData = [[NSMutableData alloc] initWithBytes:cipher_bytes length:48];
         [mutableData appendData:uniqueData];

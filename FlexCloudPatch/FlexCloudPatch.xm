@@ -2,6 +2,21 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
+#define currentPatchVersion @"1.990-3"
+#define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
+
+static bool enabled = YES;
+static bool checkUpdates = YES;
+
+static void loadPrefs() {
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:prefsPath];
+    if (prefs) {
+        enabled = ([prefs objectForKey:@"enabled"] ? [[prefs objectForKey:@"enabled"] boolValue] : enabled);
+        checkUpdates = ([prefs objectForKey:@"checkUpdates"] ? [[prefs objectForKey:@"checkUpdates"] boolValue] : checkUpdates);
+        [prefs release];
+    }
+}
+
 %group FlexCloudDevice
 %hook FLAResource
 - (NSString *) uniqueDeviceID {
@@ -64,9 +79,21 @@
                             if (resp != nil && [resp respondsToSelector:@selector(responseObject)]) {
                                 id resp_obj = [resp responseObject];
                                 if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
-                                    NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"result"];
-                                    if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
-                                        [label setText:remote_tips];
+                                    id result_obj = [resp_obj objectForKeyedSubscript:@"result"];
+                                    if (result_obj != nil && [result_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
+                                        NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"message"];
+                                        if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
+                                            [label setText:remote_tips];
+                                        }
+                                        NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
+                                        if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
+                                            if (![latest_version isEqualToString:currentPatchVersion]) {
+                                                [%c(FYUIAlertView) showAlertWithTitle:@"版本更新"
+                                                                              message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
+                                                                              buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
+                                                                           completion:nil];
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -87,8 +114,13 @@
 %end
 
 %ctor {
-    %init(FlexCloudDevice);
-    %init(FlexCloudApi);
-    %init(FlexCloudCommunity);
-    %init(RemoveGoogle);
+    loadPrefs();
+    if (enabled) {
+        %init(FlexCloudDevice);
+        %init(FlexCloudApi);
+        if (checkUpdates) {
+            %init(FlexCloudCommunity);
+        }
+        %init(RemoveGoogle);
+    }
 }

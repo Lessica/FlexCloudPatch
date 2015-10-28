@@ -14,6 +14,5 @@
 - (NSURL *)apiURL;
 - (NSData *)clientData;
 - (NSData *)authData;
-- (NSString *)getRemoteNotice;
 
 @end

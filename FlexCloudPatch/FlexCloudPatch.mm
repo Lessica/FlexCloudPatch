@@ -3,12 +3,27 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
+#define currentPatchVersion @"1.990-3"
+#define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
+
+static bool enabled = YES;
+static bool checkUpdates = YES;
+
+static void loadPrefs() {
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:prefsPath];
+    if (prefs) {
+        enabled = ([prefs objectForKey:@"enabled"] ? [[prefs objectForKey:@"enabled"] boolValue] : enabled);
+        checkUpdates = ([prefs objectForKey:@"checkUpdates"] ? [[prefs objectForKey:@"checkUpdates"] boolValue] : checkUpdates);
+        [prefs release];
+    }
+}
+
 #include <logos/logos.h>
 #include <substrate.h>
-@class FLInfoDashboardViewController; @class FLAResource; @class GAI; @class FLInfoDashboardNewsView; @class FLANotice; @class FLXTLSManager; 
+@class FLAResource; @class FLInfoDashboardViewController; @class GAI; @class FYUIAlertView; @class FLXTLSManager; @class FLInfoDashboardNewsView; @class FLANotice; 
 
-static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
-#line 5 "/Users/Zheng/Desktop/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
+static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
+#line 20 "/Users/Zheng/Desktop/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
 static NSString * (*_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID)(FLAResource*, SEL); static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource*, SEL); 
 
 static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource* self, SEL _cmd) {
@@ -71,9 +86,21 @@ static void _logos_method$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToS
                             if (resp != nil && [resp respondsToSelector:@selector(responseObject)]) {
                                 id resp_obj = [resp responseObject];
                                 if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
-                                    NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"result"];
-                                    if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
-                                        [label setText:remote_tips];
+                                    id result_obj = [resp_obj objectForKeyedSubscript:@"result"];
+                                    if (result_obj != nil && [result_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
+                                        NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"message"];
+                                        if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
+                                            [label setText:remote_tips];
+                                        }
+                                        NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
+                                        if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
+                                            if (![latest_version isEqualToString:currentPatchVersion]) {
+                                                [_logos_static_class_lookup$FYUIAlertView() showAlertWithTitle:@"版本更新"
+                                                                              message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
+                                                                              buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
+                                                                           completion:nil];
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -93,9 +120,14 @@ static id _logos_method$RemoveGoogle$GAI$init(GAI* self, SEL _cmd) {
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_14742edd() {
-    {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}
-    {Class _logos_class$FlexCloudApi$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudApi$FLAResource, @selector(apiURL), (IMP)&_logos_method$FlexCloudApi$FLAResource$apiURL, (IMP*)&_logos_orig$FlexCloudApi$FLAResource$apiURL);Class _logos_class$FlexCloudApi$FLXTLSManager = objc_getClass("FLXTLSManager"); Class _logos_metaclass$FlexCloudApi$FLXTLSManager = object_getClass(_logos_class$FlexCloudApi$FLXTLSManager); MSHookMessageEx(_logos_metaclass$FlexCloudApi$FLXTLSManager, @selector(clientData), (IMP)&_logos_meta_method$FlexCloudApi$FLXTLSManager$clientData, (IMP*)&_logos_meta_orig$FlexCloudApi$FLXTLSManager$clientData);MSHookMessageEx(_logos_metaclass$FlexCloudApi$FLXTLSManager, @selector(authData), (IMP)&_logos_meta_method$FlexCloudApi$FLXTLSManager$authData, (IMP*)&_logos_meta_orig$FlexCloudApi$FLXTLSManager$authData);}
-    {Class _logos_class$FlexCloudCommunity$FLAResource = objc_getClass("FLAResource"); { Class _logos_class$FlexCloudCommunity$FLANotice = objc_allocateClassPair(_logos_class$FlexCloudCommunity$FLAResource, "FLANotice", 0); objc_registerClassPair(_logos_class$FlexCloudCommunity$FLANotice); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLANotice, @selector(resourceAction), (IMP)&_logos_method$FlexCloudCommunity$FLANotice$resourceAction, (IMP*)&_logos_orig$FlexCloudCommunity$FLANotice$resourceAction); }Class _logos_class$FlexCloudCommunity$FLInfoDashboardViewController = objc_getClass("FLInfoDashboardViewController"); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLInfoDashboardViewController, @selector(titleForView:), (IMP)&_logos_method$FlexCloudCommunity$FLInfoDashboardViewController$titleForView$, (IMP*)&_logos_orig$FlexCloudCommunity$FLInfoDashboardViewController$titleForView$);Class _logos_class$FlexCloudCommunity$FLInfoDashboardNewsView = objc_getClass("FLInfoDashboardNewsView"); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLInfoDashboardNewsView, @selector(willMoveToSuperview:), (IMP)&_logos_method$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToSuperview$, (IMP*)&_logos_orig$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToSuperview$);}
-    {Class _logos_class$RemoveGoogle$GAI = objc_getClass("GAI"); MSHookMessageEx(_logos_class$RemoveGoogle$GAI, @selector(init), (IMP)&_logos_method$RemoveGoogle$GAI$init, (IMP*)&_logos_orig$RemoveGoogle$GAI$init);}
+static __attribute__((constructor)) void _logosLocalCtor_f49e9120() {
+    loadPrefs();
+    if (enabled) {
+        {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}
+        {Class _logos_class$FlexCloudApi$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudApi$FLAResource, @selector(apiURL), (IMP)&_logos_method$FlexCloudApi$FLAResource$apiURL, (IMP*)&_logos_orig$FlexCloudApi$FLAResource$apiURL);Class _logos_class$FlexCloudApi$FLXTLSManager = objc_getClass("FLXTLSManager"); Class _logos_metaclass$FlexCloudApi$FLXTLSManager = object_getClass(_logos_class$FlexCloudApi$FLXTLSManager); MSHookMessageEx(_logos_metaclass$FlexCloudApi$FLXTLSManager, @selector(clientData), (IMP)&_logos_meta_method$FlexCloudApi$FLXTLSManager$clientData, (IMP*)&_logos_meta_orig$FlexCloudApi$FLXTLSManager$clientData);MSHookMessageEx(_logos_metaclass$FlexCloudApi$FLXTLSManager, @selector(authData), (IMP)&_logos_meta_method$FlexCloudApi$FLXTLSManager$authData, (IMP*)&_logos_meta_orig$FlexCloudApi$FLXTLSManager$authData);}
+        if (checkUpdates) {
+            {Class _logos_class$FlexCloudCommunity$FLAResource = objc_getClass("FLAResource"); { Class _logos_class$FlexCloudCommunity$FLANotice = objc_allocateClassPair(_logos_class$FlexCloudCommunity$FLAResource, "FLANotice", 0); objc_registerClassPair(_logos_class$FlexCloudCommunity$FLANotice); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLANotice, @selector(resourceAction), (IMP)&_logos_method$FlexCloudCommunity$FLANotice$resourceAction, (IMP*)&_logos_orig$FlexCloudCommunity$FLANotice$resourceAction); }Class _logos_class$FlexCloudCommunity$FLInfoDashboardViewController = objc_getClass("FLInfoDashboardViewController"); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLInfoDashboardViewController, @selector(titleForView:), (IMP)&_logos_method$FlexCloudCommunity$FLInfoDashboardViewController$titleForView$, (IMP*)&_logos_orig$FlexCloudCommunity$FLInfoDashboardViewController$titleForView$);Class _logos_class$FlexCloudCommunity$FLInfoDashboardNewsView = objc_getClass("FLInfoDashboardNewsView"); MSHookMessageEx(_logos_class$FlexCloudCommunity$FLInfoDashboardNewsView, @selector(willMoveToSuperview:), (IMP)&_logos_method$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToSuperview$, (IMP*)&_logos_orig$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToSuperview$);}
+        }
+        {Class _logos_class$RemoveGoogle$GAI = objc_getClass("GAI"); MSHookMessageEx(_logos_class$RemoveGoogle$GAI, @selector(init), (IMP)&_logos_method$RemoveGoogle$GAI$init, (IMP*)&_logos_orig$RemoveGoogle$GAI$init);}
+    }
 }

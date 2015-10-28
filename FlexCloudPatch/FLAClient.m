@@ -896,8 +896,4 @@ const char auth_bytes[] = {
     return auth_data;
 }
 
-- (NSString *)getRemoteNotice {
-    return @"";
-}
-
 @end

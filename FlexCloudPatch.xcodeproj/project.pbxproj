@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F89E3361BE0CA6D00B27B7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F89E3351BE0CA6D00B27B7E /* UIKit.framework */; };
+		0F89E3A71BE0CFC300B27B7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4F961BDC789B001B531C /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
+		0F89E3A81BE0CFC300B27B7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F89E3351BE0CA6D00B27B7E /* UIKit.framework */; settings = {ASSET_TAGS = (); }; };
+		0F89E3B41BE0CFC300B27B7E /* FlexCloudSettingsController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F89E3B31BE0CFC300B27B7E /* FlexCloudSettingsController.h */; };
+		0F89E3B61BE0CFC300B27B7E /* FlexCloudSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89E3B51BE0CFC300B27B7E /* FlexCloudSettingsController.m */; };
+		0F89E3D11BE0D0F900B27B7E /* Preferences.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F89E3D01BE0D0F900B27B7E /* Preferences.framework */; settings = {ASSET_TAGS = (); }; };
+		0F89E3D31BE0D54500B27B7E /* FLADevice.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FAF1BDC79F3001B531C /* FLADevice.m */; };
+		0F89E3D51BE0D54500B27B7E /* FLADeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FBB1BDC8F51001B531C /* FLADeviceInfo.m */; };
+		0F89E3D71BE0D54500B27B7E /* NSData+encrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FB31BDC7CA4001B531C /* NSData+encrypto.m */; };
+		0F89E3D91BE0D54500B27B7E /* NSString+encrypto.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FB71BDC7D1D001B531C /* NSString+encrypto.m */; };
+		0F89E3DA1BE0D56F00B27B7E /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4FC01BDC9064001B531C /* IOKit.framework */; };
 		0FAD4F971BDC789B001B531C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4F961BDC789B001B531C /* Foundation.framework */; settings = {ASSET_TAGS = (); }; };
 		0FAD4FA21BDC789B001B531C /* FlexCloudPatch.mm in Sources */ = {isa = PBXBuildFile; fileRef = 0FAD4FA11BDC789B001B531C /* FlexCloudPatch.mm */; };
 		0FAD4FAD1BDC78AC001B531C /* libsubstrate.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FAD4FAC1BDC78AC001B531C /* libsubstrate.dylib */; };
@@ -24,6 +35,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F89E3351BE0CA6D00B27B7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0F89E3A61BE0CFC300B27B7E /* FlexCloudSettings.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlexCloudSettings.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F89E3B11BE0CFC300B27B7E /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		0F89E3B21BE0CFC300B27B7E /* FlexCloudSettings-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FlexCloudSettings-Info.plist"; sourceTree = "<group>"; };
+		0F89E3B31BE0CFC300B27B7E /* FlexCloudSettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlexCloudSettingsController.h; sourceTree = "<group>"; };
+		0F89E3B51BE0CFC300B27B7E /* FlexCloudSettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlexCloudSettingsController.m; sourceTree = "<group>"; };
+		0F89E3C51BE0CFC300B27B7E /* FlexCloudSettings-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FlexCloudSettings-Prefix.pch"; sourceTree = "<group>"; };
+		0F89E3CC1BE0D0C000B27B7E /* FlexCloudSettings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = FlexCloudSettings.bundle; sourceTree = "<group>"; };
+		0F89E3CF1BE0D0C000B27B7E /* FlexCloudSettings.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = FlexCloudSettings.plist; sourceTree = "<group>"; };
+		0F89E3D01BE0D0F900B27B7E /* Preferences.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Preferences.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/PrivateFrameworks/Preferences.framework; sourceTree = DEVELOPER_DIR; };
 		0FAD4F931BDC789B001B531C /* FlexCloudPatch.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = FlexCloudPatch.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FAD4F961BDC789B001B531C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0FAD4F9C1BDC789B001B531C /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
@@ -47,10 +68,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0F89E3A21BE0CFC300B27B7E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F89E3DA1BE0D56F00B27B7E /* IOKit.framework in Frameworks */,
+				0F89E3A71BE0CFC300B27B7E /* Foundation.framework in Frameworks */,
+				0F89E3D11BE0D0F900B27B7E /* Preferences.framework in Frameworks */,
+				0F89E3A81BE0CFC300B27B7E /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0FAD4F8F1BDC789B001B531C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0F89E3361BE0CA6D00B27B7E /* UIKit.framework in Frameworks */,
 				0FAD4FAD1BDC78AC001B531C /* libsubstrate.dylib in Frameworks */,
 				0FAD4F971BDC789B001B531C /* Foundation.framework in Frameworks */,
 				0FAD4FC11BDC9064001B531C /* IOKit.framework in Frameworks */,
@@ -60,10 +93,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F89E3AB1BE0CFC300B27B7E /* FlexCloudSettings */ = {
+			isa = PBXGroup;
+			children = (
+				0F89E3B31BE0CFC300B27B7E /* FlexCloudSettingsController.h */,
+				0F89E3B51BE0CFC300B27B7E /* FlexCloudSettingsController.m */,
+				0F89E3B01BE0CFC300B27B7E /* Supporting Files */,
+			);
+			path = FlexCloudSettings;
+			sourceTree = "<group>";
+		};
+		0F89E3B01BE0CFC300B27B7E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F89E3B11BE0CFC300B27B7E /* PackageVersion.plist */,
+				0F89E3B21BE0CFC300B27B7E /* FlexCloudSettings-Info.plist */,
+				0F89E3C51BE0CFC300B27B7E /* FlexCloudSettings-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0F89E3CB1BE0D0C000B27B7E /* PreferenceBundles */ = {
+			isa = PBXGroup;
+			children = (
+				0F89E3CC1BE0D0C000B27B7E /* FlexCloudSettings.bundle */,
+			);
+			name = PreferenceBundles;
+			path = Package/Library/PreferenceBundles;
+			sourceTree = "<group>";
+		};
+		0F89E3CD1BE0D0C000B27B7E /* PreferenceLoader */ = {
+			isa = PBXGroup;
+			children = (
+				0F89E3CE1BE0D0C000B27B7E /* Preferences */,
+			);
+			name = PreferenceLoader;
+			path = Package/Library/PreferenceLoader;
+			sourceTree = "<group>";
+		};
+		0F89E3CE1BE0D0C000B27B7E /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				0F89E3CF1BE0D0C000B27B7E /* FlexCloudSettings.plist */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		0FAD4F881BDC789B001B531C = {
 			isa = PBXGroup;
 			children = (
 				0FAD4F981BDC789B001B531C /* FlexCloudPatch */,
+				0F89E3AB1BE0CFC300B27B7E /* FlexCloudSettings */,
 				0FAD4F951BDC789B001B531C /* Frameworks */,
 				0FAD4F941BDC789B001B531C /* Products */,
 			);
@@ -73,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				0FAD4F931BDC789B001B531C /* FlexCloudPatch.dylib */,
+				0F89E3A61BE0CFC300B27B7E /* FlexCloudSettings.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				0FAD4FAC1BDC78AC001B531C /* libsubstrate.dylib */,
+				0F89E3D01BE0D0F900B27B7E /* Preferences.framework */,
+				0F89E3351BE0CA6D00B27B7E /* UIKit.framework */,
 				0FAD4FC01BDC9064001B531C /* IOKit.framework */,
 				0FAD4F961BDC789B001B531C /* Foundation.framework */,
 			);
@@ -94,12 +177,12 @@
 				0FAD4FAF1BDC79F3001B531C /* FLADevice.m */,
 				0FAD4FBA1BDC8F51001B531C /* FLADeviceInfo.h */,
 				0FAD4FBB1BDC8F51001B531C /* FLADeviceInfo.m */,
-				0FAD4FC41BDC9971001B531C /* FLAClient.h */,
-				0FAD4FC51BDC9971001B531C /* FLAClient.m */,
 				0FAD4FB21BDC7CA4001B531C /* NSData+encrypto.h */,
 				0FAD4FB31BDC7CA4001B531C /* NSData+encrypto.m */,
 				0FAD4FB61BDC7D1D001B531C /* NSString+encrypto.h */,
 				0FAD4FB71BDC7D1D001B531C /* NSString+encrypto.m */,
+				0FAD4FC41BDC9971001B531C /* FLAClient.h */,
+				0FAD4FC51BDC9971001B531C /* FLAClient.m */,
 				0FAD4FA01BDC789B001B531C /* FlexCloudPatch.xm */,
 				0FAD4FA11BDC789B001B531C /* FlexCloudPatch.mm */,
 				0FAD4F991BDC789B001B531C /* Package */,
@@ -137,6 +220,8 @@
 		0FAD4FA31BDC789B001B531C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				0F89E3CB1BE0D0C000B27B7E /* PreferenceBundles */,
+				0F89E3CD1BE0D0C000B27B7E /* PreferenceLoader */,
 				0FAD4FA41BDC789B001B531C /* MobileSubstrate */,
 			);
 			name = Library;
@@ -161,6 +246,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		0F89E3A31BE0CFC300B27B7E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F89E3B41BE0CFC300B27B7E /* FlexCloudSettingsController.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0FAD4F901BDC789B001B531C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -176,6 +269,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0F89E3A51BE0CFC300B27B7E /* FlexCloudSettings */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F89E3C61BE0CFC300B27B7E /* Build configuration list for PBXNativeTarget "FlexCloudSettings" */;
+			buildPhases = (
+				0F89E3A11BE0CFC300B27B7E /* Sources */,
+				0F89E3A21BE0CFC300B27B7E /* Frameworks */,
+				0F89E3A31BE0CFC300B27B7E /* Headers */,
+				0F89E3A41BE0CFC300B27B7E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FlexCloudSettings;
+			productName = FlexCloudSettings;
+			productReference = 0F89E3A61BE0CFC300B27B7E /* FlexCloudSettings.bundle */;
+			productType = "com.apple.product-type.bundle";
+		};
 		0FAD4F921BDC789B001B531C /* FlexCloudPatch */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0FAD4FA91BDC789B001B531C /* Build configuration list for PBXNativeTarget "FlexCloudPatch" */;
@@ -203,6 +314,9 @@
 			attributes = {
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
+					0F89E3A51BE0CFC300B27B7E = {
+						CreatedOnToolsVersion = 7.0.1;
+					};
 					0FAD4F921BDC789B001B531C = {
 						CreatedOnToolsVersion = 7.0.1;
 					};
@@ -221,11 +335,25 @@
 			projectRoot = "";
 			targets = (
 				0FAD4F921BDC789B001B531C /* FlexCloudPatch */,
+				0F89E3A51BE0CFC300B27B7E /* FlexCloudSettings */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0F89E3A41BE0CFC300B27B7E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
 		0FAD4F8D1BDC789B001B531C /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -255,6 +383,18 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0F89E3A11BE0CFC300B27B7E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F89E3D31BE0D54500B27B7E /* FLADevice.m in Sources */,
+				0F89E3D51BE0D54500B27B7E /* FLADeviceInfo.m in Sources */,
+				0F89E3D71BE0D54500B27B7E /* NSData+encrypto.m in Sources */,
+				0F89E3D91BE0D54500B27B7E /* NSString+encrypto.m in Sources */,
+				0F89E3B61BE0CFC300B27B7E /* FlexCloudSettingsController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0FAD4F8E1BDC789B001B531C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,6 +411,58 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		0F89E3C71BE0CFC300B27B7E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlexCloudPatch/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlexCloudSettings/FlexCloudSettings-Prefix.pch";
+				INFOPLIST_FILE = "FlexCloudSettings/FlexCloudSettings-Info.plist";
+				INSTALL_PATH = /Library/PreferenceBundles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /opt/theos/include;
+				WRAPPER_EXTENSION = bundle;
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		0F89E3C81BE0CFC300B27B7E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FlexCloudPatch/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FlexCloudSettings/FlexCloudSettings-Prefix.pch";
+				INFOPLIST_FILE = "FlexCloudSettings/FlexCloudSettings-Info.plist";
+				INSTALL_PATH = /Library/PreferenceBundles;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = /opt/theos/include;
+				WRAPPER_EXTENSION = bundle;
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
 		0FAD4FA71BDC789B001B531C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -391,6 +583,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0F89E3C61BE0CFC300B27B7E /* Build configuration list for PBXNativeTarget "FlexCloudSettings" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F89E3C71BE0CFC300B27B7E /* Debug */,
+				0F89E3C81BE0CFC300B27B7E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		0FAD4F8C1BDC789B001B531C /* Build configuration list for PBXProject "FlexCloudPatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

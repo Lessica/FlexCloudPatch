@@ -20,9 +20,9 @@ static void loadPrefs() {
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class FLAResource; @class FLInfoDashboardViewController; @class GAI; @class FYUIAlertView; @class FLXTLSManager; @class FLInfoDashboardNewsView; @class FLANotice; 
+@class GAI; @class FLInfoDashboardNewsView; @class FLInfoDashboardViewController; @class FLANotice; @class FLXTLSManager; @class FLAResource; 
 
-static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
+static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
 #line 20 "/Users/Zheng/Desktop/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
 static NSString * (*_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID)(FLAResource*, SEL); static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource*, SEL); 
 
@@ -92,15 +92,17 @@ static void _logos_method$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToS
                                         if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
                                             [label setText:remote_tips];
                                         }
-                                        NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
-                                        if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
-                                            if (![latest_version isEqualToString:currentPatchVersion]) {
-                                                [_logos_static_class_lookup$FYUIAlertView() showAlertWithTitle:@"版本更新"
-                                                                              message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
-                                                                              buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
-                                                                           completion:nil];
-                                            }
-                                        }
+                                        
+
+
+
+
+
+
+
+
+
+
                                     }
                                 }
                             }
@@ -120,7 +122,7 @@ static id _logos_method$RemoveGoogle$GAI$init(GAI* self, SEL _cmd) {
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_f49e9120() {
+static __attribute__((constructor)) void _logosLocalCtor_18bd9d6c() {
     loadPrefs();
     if (enabled) {
         {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}

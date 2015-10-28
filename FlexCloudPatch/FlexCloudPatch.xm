@@ -85,6 +85,7 @@ static void loadPrefs() {
                                         if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
                                             [label setText:remote_tips];
                                         }
+                                        /*
                                         NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
                                         if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
                                             if (![latest_version isEqualToString:currentPatchVersion]) {
@@ -94,6 +95,7 @@ static void loadPrefs() {
                                                                            completion:nil];
                                             }
                                         }
+                                         */
                                     }
                                 }
                             }

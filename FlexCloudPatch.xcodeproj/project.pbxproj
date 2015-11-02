@@ -414,6 +414,7 @@
 		0F89E3C71BE0CFC300B27B7E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -440,6 +441,7 @@
 		0F89E3C81BE0CFC300B27B7E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -590,6 +592,7 @@
 				0F89E3C81BE0CFC300B27B7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0FAD4F8C1BDC789B001B531C /* Build configuration list for PBXProject "FlexCloudPatch" */ = {
 			isa = XCConfigurationList;

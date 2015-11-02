@@ -2,8 +2,9 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
-#define currentPatchVersion @"1.990-3"
+#define currentPatchVersion @"1.990-6"
 #define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
+#define updateUrl @"cydia://url/https://cydia.saurik.com/api/share#?source=http://apt.82flex.com/&package=com.darwindev.flexcloud"
 
 static bool enabled = YES;
 static bool checkUpdates = YES;
@@ -81,21 +82,24 @@ static void loadPrefs() {
                                 if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
                                     id result_obj = [resp_obj objectForKeyedSubscript:@"result"];
                                     if (result_obj != nil && [result_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
-                                        NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"message"];
+                                        NSString *remote_tips = [result_obj objectForKeyedSubscript:@"message"];
                                         if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
                                             [label setText:remote_tips];
                                         }
-                                        /*
-                                        NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
+                                        
+                                        NSString *latest_version = [result_obj objectForKeyedSubscript:@"latestVersion"];
                                         if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
                                             if (![latest_version isEqualToString:currentPatchVersion]) {
                                                 [%c(FYUIAlertView) showAlertWithTitle:@"版本更新"
                                                                               message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
                                                                               buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
-                                                                           completion:nil];
+                                                                           completion:^(int choice){
+                                                                               if (choice == 1) {
+                                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl]];
+                                                                               }
+                                                                           }];
                                             }
                                         }
-                                         */
                                     }
                                 }
                             }

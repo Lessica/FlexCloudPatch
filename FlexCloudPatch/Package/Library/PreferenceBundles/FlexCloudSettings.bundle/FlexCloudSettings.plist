@@ -53,6 +53,14 @@
 			<string>复制设备号</string>
 		</dict>
 		<dict>
+			<key>action</key>
+			<string>logout:</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>注销登录</string>
+		</dict>
+		<dict>
 			<key>footerText</key>
 			<string>开启主开关，将启用 Flex 2 中文云端。
 关闭将恢复官方服务器的使用，重启 Flex 2 生效。

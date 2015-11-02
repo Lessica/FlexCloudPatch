@@ -3,8 +3,9 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
-#define currentPatchVersion @"1.990-3"
+#define currentPatchVersion @"1.990-6"
 #define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
+#define updateUrl @"cydia://url/https://cydia.saurik.com/api/share#?source=http://apt.82flex.com/&package=com.darwindev.flexcloud"
 
 static bool enabled = YES;
 static bool checkUpdates = YES;
@@ -20,10 +21,10 @@ static void loadPrefs() {
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class GAI; @class FLInfoDashboardNewsView; @class FLInfoDashboardViewController; @class FLANotice; @class FLXTLSManager; @class FLAResource; 
+@class FLAResource; @class FLInfoDashboardNewsView; @class GAI; @class FYUIAlertView; @class FLANotice; @class FLXTLSManager; @class FLInfoDashboardViewController; 
 
-static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
-#line 20 "/Users/Zheng/Desktop/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
+static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }
+#line 21 "/Users/Zheng/Desktop/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
 static NSString * (*_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID)(FLAResource*, SEL); static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource*, SEL); 
 
 static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource* self, SEL _cmd) {
@@ -88,21 +89,24 @@ static void _logos_method$FlexCloudCommunity$FLInfoDashboardNewsView$willMoveToS
                                 if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
                                     id result_obj = [resp_obj objectForKeyedSubscript:@"result"];
                                     if (result_obj != nil && [result_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
-                                        NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"message"];
+                                        NSString *remote_tips = [result_obj objectForKeyedSubscript:@"message"];
                                         if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
                                             [label setText:remote_tips];
                                         }
                                         
-
-
-
-
-
-
-
-
-
-
+                                        NSString *latest_version = [result_obj objectForKeyedSubscript:@"latestVersion"];
+                                        if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
+                                            if (![latest_version isEqualToString:currentPatchVersion]) {
+                                                [_logos_static_class_lookup$FYUIAlertView() showAlertWithTitle:@"版本更新"
+                                                                              message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
+                                                                              buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
+                                                                           completion:^(int choice){
+                                                                               if (choice == 1) {
+                                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl]];
+                                                                               }
+                                                                           }];
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -122,7 +126,7 @@ static id _logos_method$RemoveGoogle$GAI$init(GAI* self, SEL _cmd) {
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_18bd9d6c() {
+static __attribute__((constructor)) void _logosLocalCtor_60a54890() {
     loadPrefs();
     if (enabled) {
         {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}

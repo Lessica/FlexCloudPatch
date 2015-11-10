@@ -2,9 +2,8 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
-#define currentPatchVersion @"1.990-6"
+#define currentPatchVersion @"1.990-3"
 #define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
-#define updateUrl @"cydia://url/https://cydia.saurik.com/api/share#?source=http://apt.82flex.com/&package=com.darwindev.flexcloud"
 
 static bool enabled = YES;
 static bool checkUpdates = YES;
@@ -82,24 +81,21 @@ static void loadPrefs() {
                                 if (resp_obj != nil && [resp_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
                                     id result_obj = [resp_obj objectForKeyedSubscript:@"result"];
                                     if (result_obj != nil && [result_obj respondsToSelector:@selector(objectForKeyedSubscript:)]) {
-                                        NSString *remote_tips = [result_obj objectForKeyedSubscript:@"message"];
+                                        NSString *remote_tips = [resp_obj objectForKeyedSubscript:@"message"];
                                         if (remote_tips != nil && [remote_tips isKindOfClass:[NSString class]]) {
                                             [label setText:remote_tips];
                                         }
-                                        
-                                        NSString *latest_version = [result_obj objectForKeyedSubscript:@"latestVersion"];
+                                        /*
+                                        NSString *latest_version =[resp_obj objectForKeyedSubscript:@"latestVersion"];
                                         if (latest_version != nil && [latest_version isKindOfClass:[NSString class]]) {
                                             if (![latest_version isEqualToString:currentPatchVersion]) {
                                                 [%c(FYUIAlertView) showAlertWithTitle:@"版本更新"
                                                                               message:[NSString stringWithFormat:@"当前版本: %@\n最新版本: %@\n是否前往 Cydia 更新? ", currentPatchVersion, latest_version]
                                                                               buttons:[NSArray arrayWithObjects:@"取消", @"更新", nil]
-                                                                           completion:^(int choice){
-                                                                               if (choice == 1) {
-                                                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateUrl]];
-                                                                               }
-                                                                           }];
+                                                                           completion:nil];
                                             }
                                         }
+                                         */
                                     }
                                 }
                             }
@@ -119,9 +115,187 @@ static void loadPrefs() {
 %end
 %end
 
+
+%group FlexToCN
+//flex2汉化 by jk
+%hook FLInfoDiagnosticsTableViewController
+- (void *)viewDidLoad
+{
+    %orig;
+    [self setTitle:@"开发者页面"];
+    UITableView *tableView = [self tableView];
+    NSInteger width = [[UIScreen mainScreen] bounds].size.width;
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, width, 423.0f)];
+    NSString *urlString = @"https://cydia.so/";
+    NSURL *url =[NSURL URLWithString:urlString];
+    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
+    //[tableView setHidden:YES];
+    [tableView addSubview:webView];
+    [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+}
+%end
+
+
+%hook FLCloudAppsViewController
+- (void *)setType:(id)arg1 {
+    %orig;
+    if (arg1){
+        [self setTitle:@"全部"];
+    }else{
+        [self setTitle:@"已安装"];
+    }
+}
+%end
+
+
+%hook FLCloudPatchesViewController
+-(id) initWithTitle:(id)arg1 resource:(id)arg2{
+    NSString *recent = @"Recent";
+    bool zuijin = [arg1 isEqualToString:recent];
+    NSString *Popular = @"Popular";
+    bool paihang = [arg1 isEqualToString:Popular];
+    if (zuijin){
+        %orig(@"最近",arg2);
+    }else if(paihang){
+        %orig(@"排行榜",arg2);
+    }else{
+        %orig(arg1,arg2);
+    }
+}
+%end
+
+
+%hook FYAccountLoginViewController
+-(id) buttonWithLabel:(id)arg1 andSelector:(id)arg2{
+    NSString *Login = @"Login";
+    bool islogin = [arg1 isEqualToString:Login];
+    NSString *Register = @"Register";
+    bool isregister = [arg1 isEqualToString:Register];
+    
+    if (islogin){
+        %orig(@"登陆",arg2);
+    }else if(isregister){
+        %orig(@"注册",arg2);
+    }else {
+        %orig(arg1,arg2);
+    }
+}
+%end
+
+/*
+ %hook FYSharePatchViewController
+ -(id) tableView:(id)arg1 titleForHeaderInSection:(int)arg2{
+  if (arg2 == 0){
+ return @"补丁名称";
+  }else if(arg2 == 1){
+ return @"作者";
+  }else {
+ return @"描述";
+  }
+ }
+ %end
+ */
+
+
+
+%hook FLInfoDashboardViewController
+- (void *)viewDidLoad {
+    %orig;
+    [self setTitle:@"公告"];
+}
+%end
+
+%hook FLPatchesViewController
+- (void *)loadView {
+    %orig;
+    [self setTitle:@"补丁"];
+}
+%end
+
+%hook FLPatchAddViewController
+- (void *)loadView {
+    %orig;
+    [self setTitle:@"选择应用"];
+}
+%end
+
+%hook FLPatchEditViewController
+- (void *)loadView {
+    %orig;
+    [self setTitle:@"编辑补丁"];
+}
+%end
+
+%hook FYSharePatchViewController
+- (void *)loadView {
+    %orig;
+    [self setTitle:@"上传补丁"];
+}
+%end
+
+%hook FYAccountLoginViewController
+- (void *)viewDidLoad {
+    %orig;
+    [self setTitle:@"登陆"];
+}
+
+- (id)registerUISetup {
+    %orig;
+    [self setTitle:@"注册"];
+}
+%end
+
+
+
+%hook FLCloudViewController
+- (void *)viewDidLoad {
+    %orig;
+    [self setTitle:@"中文云端"];
+}
+%end
+
+%hook FLInfoViewController
+- (void *)viewDidLoad {
+    %orig;
+    [self setTitle:@"关于"];
+}
+%end
+
+
+%hook FLCloudPatchDescriptionView
+- (void *)sectionTitle {
+    return @"描述";
+}
+%end
+
+%hook FYTabBarItemView
+- (id)label {
+    %orig;
+    UILabel *label = MSHookIvar<UILabel *>(self,"_label");
+    if ([label.text isEqualToString:@"patches"]) {
+        label.text = @"我的补丁";
+    }
+    else if ([label.text isEqualToString:@"cloud"])
+    {
+        label.text = @"云端";
+    } else
+        if ([label.text isEqualToString:@"info"])
+        {
+            label.text = @"关于";
+        }
+    return label;
+}
+%end
+%end
+
+
+
+
 %ctor {
     loadPrefs();
     if (enabled) {
+        %init(FlexToCN);
         %init(FlexCloudDevice);
         %init(FlexCloudApi);
         if (checkUpdates) {

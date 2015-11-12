@@ -12,6 +12,7 @@
 
 + (FLAClient *)sharedInstance;
 - (NSURL *)apiURL;
+- (NSURL *)moreURL:(NSString *)session;
 - (NSData *)clientData;
 - (NSData *)authData;
 

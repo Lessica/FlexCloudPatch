@@ -21,9 +21,9 @@ static void loadPrefs() {
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class FLAResource; @class FLPatchAddViewController; @class FLCloudViewController; @class FLInfoDashboardNewsView; @class FYTabBarItemView; @class FLANotice; @class FYSharePatchViewController; @class FLInfoDashboardViewController; @class FLInfoViewController; @class FLPatchesViewController; @class FLPatchEditViewController; @class FYAccount; @class GAI; @class FYAccountLoginViewController; @class FLXTLSManager; @class FLInfoDiagnosticsTableViewController; @class FYUIAlertView; @class FYUISegmentedBar; 
+@class GAI; @class FYTabBarItemView; @class FLInfoDashboardViewController; @class FLPatchAddViewController; @class FLInfoViewController; @class FYAccountLoginViewController; @class FLInfoDashboardNewsView; @class FLANotice; @class FYUISegmentedBar; @class FLXTLSManager; @class FLPatchEditViewController; @class FYUIAlertView; @class FLPatchesViewController; @class FYSharePatchViewController; @class FLAResource; @class FLInfoDiagnosticsTableViewController; @class FLCloudViewController; 
 
-static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYAccount(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYAccount"); } return _klass; }
+static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }
 #line 21 "/Users/Zheng/Documents/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
 static NSString * (*_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID)(FLAResource*, SEL); static NSString * _logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID(FLAResource*, SEL); 
 
@@ -132,15 +132,9 @@ static void _logos_method$FlexLocalization$FLInfoDiagnosticsTableViewController$
     [self setTitle:@"开发者"];
     UITableView *tableView = [self tableView];
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, tableView.frame.size.height)];
-    id account = [_logos_static_class_lookup$FYAccount() sharedInstance];
-    NSURL *url;
-    if (account) {
-        url = [[FLAClient sharedInstance] moreUrl:[account currentSession]];
-    } else {
-        url = [[FLAClient sharedInstance] moreUrl:nil];
-    }
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
+
+
+
     [tableView addSubview:webView];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -256,7 +250,7 @@ static void _logos_method$FlexLocalization$FLInfoViewController$viewDidLoad(FLIn
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_5a8246b3() {
+static __attribute__((constructor)) void _logosLocalCtor_c4f12235() {
     loadPrefs();
     if (enabled) {
         {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}

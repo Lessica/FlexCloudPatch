@@ -125,15 +125,9 @@ static void loadPrefs() {
     [self setTitle:@"开发者"];
     UITableView *tableView = [self tableView];
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, tableView.frame.size.height)];
-    id account = [%c(FYAccount) sharedInstance];
-    NSURL *url;
-    if (account) {
-        url = [[FLAClient sharedInstance] moreUrl:[account currentSession]];
-    } else {
-        url = [[FLAClient sharedInstance] moreUrl:nil];
-    }
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
+//    NSURL *url;
+//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//    [webView loadRequest:request];
     [tableView addSubview:webView];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }

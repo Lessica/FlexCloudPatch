@@ -2,7 +2,7 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
-#define currentPatchVersion @"1.990-7"
+#define currentPatchVersion @"1.990-8"
 #define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
 #define updateUrl @"cydia://url/https://cydia.saurik.com/api/share#?source=http://apt.82flex.com/&package=com.darwindev.flexcloud"
 
@@ -124,10 +124,13 @@ static void loadPrefs() {
     %orig;
     [self setTitle:@"开发者"];
     UITableView *tableView = [self tableView];
+    [tableView setBackgroundColor:[UIColor colorWithRed:44/255.0 green:78/255.0 blue:115/255.0 alpha:1]];
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, tableView.frame.size.height)];
-//    NSURL *url;
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    [webView loadRequest:request];
+    [webView setBackgroundColor:[UIColor colorWithRed:44/255.0 green:78/255.0 blue:115/255.0 alpha:1]];
+    [webView setOpaque:NO];
+    NSURL *url = [[FLAClient sharedInstance] moreURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
     [tableView addSubview:webView];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }

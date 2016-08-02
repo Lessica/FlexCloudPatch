@@ -3,7 +3,7 @@
 #import "FLAClient.h"
 #import <UIKit/UIKit.h>
 
-#define currentPatchVersion @"1.990-7"
+#define currentPatchVersion @"1.990-8"
 #define prefsPath @"/private/var/mobile/Library/Preferences/com.darwindev.FlexCloudSettings.plist"
 #define updateUrl @"cydia://url/https://cydia.saurik.com/api/share#?source=http://apt.82flex.com/&package=com.darwindev.flexcloud"
 
@@ -21,7 +21,7 @@ static void loadPrefs() {
 
 #include <logos/logos.h>
 #include <substrate.h>
-@class GAI; @class FYTabBarItemView; @class FLInfoDashboardViewController; @class FLPatchAddViewController; @class FLInfoViewController; @class FYAccountLoginViewController; @class FLInfoDashboardNewsView; @class FLANotice; @class FYUISegmentedBar; @class FLXTLSManager; @class FLPatchEditViewController; @class FYUIAlertView; @class FLPatchesViewController; @class FYSharePatchViewController; @class FLAResource; @class FLInfoDiagnosticsTableViewController; @class FLCloudViewController; 
+@class FLXTLSManager; @class FLPatchesViewController; @class FLPatchAddViewController; @class GAI; @class FLCloudViewController; @class FYUISegmentedBar; @class FLPatchEditViewController; @class FYUIAlertView; @class FYSharePatchViewController; @class FYAccountLoginViewController; @class FLInfoDashboardViewController; @class FLANotice; @class FLInfoViewController; @class FLAResource; @class FLInfoDiagnosticsTableViewController; @class FYTabBarItemView; @class FLInfoDashboardNewsView; 
 
 static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FLANotice(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FLANotice"); } return _klass; }static __inline__ __attribute__((always_inline)) __attribute__((unused)) Class _logos_static_class_lookup$FYUIAlertView(void) { static Class _klass; if(!_klass) { _klass = objc_getClass("FYUIAlertView"); } return _klass; }
 #line 21 "/Users/Zheng/Documents/FlexCloudPatch/FlexCloudPatch/FlexCloudPatch.xm"
@@ -128,13 +128,17 @@ static id _logos_method$RemoveGoogle$GAI$init(GAI* self, SEL _cmd) {
 static void (*_logos_orig$FlexLocalization$FLInfoDiagnosticsTableViewController$viewDidLoad)(FLInfoDiagnosticsTableViewController*, SEL); static void _logos_method$FlexLocalization$FLInfoDiagnosticsTableViewController$viewDidLoad(FLInfoDiagnosticsTableViewController*, SEL); static id (*_logos_orig$FlexLocalization$FYAccountLoginViewController$buttonWithLabel$andSelector$)(FYAccountLoginViewController*, SEL, id, id); static id _logos_method$FlexLocalization$FYAccountLoginViewController$buttonWithLabel$andSelector$(FYAccountLoginViewController*, SEL, id, id); static void (*_logos_orig$FlexLocalization$FYAccountLoginViewController$viewDidLoad)(FYAccountLoginViewController*, SEL); static void _logos_method$FlexLocalization$FYAccountLoginViewController$viewDidLoad(FYAccountLoginViewController*, SEL); static id (*_logos_orig$FlexLocalization$FYAccountLoginViewController$registerUISetup)(FYAccountLoginViewController*, SEL); static id _logos_method$FlexLocalization$FYAccountLoginViewController$registerUISetup(FYAccountLoginViewController*, SEL); static id (*_logos_orig$FlexLocalization$FYTabBarItemView$label)(FYTabBarItemView*, SEL); static id _logos_method$FlexLocalization$FYTabBarItemView$label(FYTabBarItemView*, SEL); static id (*_logos_orig$FlexLocalization$FYUISegmentedBar$buttonWithTitle$)(FYUISegmentedBar*, SEL, id); static id _logos_method$FlexLocalization$FYUISegmentedBar$buttonWithTitle$(FYUISegmentedBar*, SEL, id); static void (*_logos_orig$FlexLocalization$FLPatchesViewController$loadView)(FLPatchesViewController*, SEL); static void _logos_method$FlexLocalization$FLPatchesViewController$loadView(FLPatchesViewController*, SEL); static void (*_logos_orig$FlexLocalization$FLPatchAddViewController$loadView)(FLPatchAddViewController*, SEL); static void _logos_method$FlexLocalization$FLPatchAddViewController$loadView(FLPatchAddViewController*, SEL); static void (*_logos_orig$FlexLocalization$FLPatchEditViewController$loadView)(FLPatchEditViewController*, SEL); static void _logos_method$FlexLocalization$FLPatchEditViewController$loadView(FLPatchEditViewController*, SEL); static void (*_logos_orig$FlexLocalization$FYSharePatchViewController$loadView)(FYSharePatchViewController*, SEL); static void _logos_method$FlexLocalization$FYSharePatchViewController$loadView(FYSharePatchViewController*, SEL); static void (*_logos_orig$FlexLocalization$FLCloudViewController$viewDidLoad)(FLCloudViewController*, SEL); static void _logos_method$FlexLocalization$FLCloudViewController$viewDidLoad(FLCloudViewController*, SEL); static void (*_logos_orig$FlexLocalization$FLInfoViewController$viewDidLoad)(FLInfoViewController*, SEL); static void _logos_method$FlexLocalization$FLInfoViewController$viewDidLoad(FLInfoViewController*, SEL); 
 
 static void _logos_method$FlexLocalization$FLInfoDiagnosticsTableViewController$viewDidLoad(FLInfoDiagnosticsTableViewController* self, SEL _cmd) {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=CCSettings"]];
     _logos_orig$FlexLocalization$FLInfoDiagnosticsTableViewController$viewDidLoad(self, _cmd);
     [self setTitle:@"开发者"];
     UITableView *tableView = [self tableView];
+    [tableView setBackgroundColor:[UIColor colorWithRed:44/255.0 green:78/255.0 blue:115/255.0 alpha:1]];
     UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, tableView.frame.size.width, tableView.frame.size.height)];
-
-
-
+    [webView setBackgroundColor:[UIColor colorWithRed:44/255.0 green:78/255.0 blue:115/255.0 alpha:1]];
+    [webView setOpaque:NO];
+    NSURL *url = [[FLAClient sharedInstance] moreURL];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [webView loadRequest:request];
     [tableView addSubview:webView];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
@@ -250,7 +254,7 @@ static void _logos_method$FlexLocalization$FLInfoViewController$viewDidLoad(FLIn
 
 
 
-static __attribute__((constructor)) void _logosLocalCtor_c4f12235() {
+static __attribute__((constructor)) void _logosLocalCtor_b648a5b1() {
     loadPrefs();
     if (enabled) {
         {Class _logos_class$FlexCloudDevice$FLAResource = objc_getClass("FLAResource"); MSHookMessageEx(_logos_class$FlexCloudDevice$FLAResource, @selector(uniqueDeviceID), (IMP)&_logos_method$FlexCloudDevice$FLAResource$uniqueDeviceID, (IMP*)&_logos_orig$FlexCloudDevice$FLAResource$uniqueDeviceID);}

@@ -7,7 +7,10 @@
 //
 
 #import "FLAClient.h"
+#import "FLADevice.h"
 #import "NSString+encrypto.h"
+
+#define accountPrefsPath @"/private/var/mobile/Library/Preferences/com.johncoates.Flex.plist"
 
 @implementation FLAClient
 static FLAClient *sharedClient = nil;
@@ -39,7 +42,7 @@ const char url_bytes[] = {
     return [NSURL URLWithString:url];
 }
 
-- (NSURL *)moreURL:(NSString *)session {
+- (NSURL *)moreURL {
 const char url_bytes[] = {
 0x61, 0x48, 0x52, 0x30, 0x63, 0x48, 0x4d, 0x36,
 0x4c, 0x79, 0x39, 0x6b, 0x64, 0x33, 0x6f, 0x75,
@@ -48,17 +51,25 @@ const char url_bytes[] = {
 0x61, 0x57, 0x34, 0x76, 0x55, 0x48, 0x56, 0x69,
 0x62, 0x47, 0x6c, 0x6a, 0x4c, 0x30, 0x5a, 0x73,
 0x5a, 0x58, 0x68, 0x45, 0x5a, 0x58, 0x59, 0x2f,
-0x63, 0x32, 0x56, 0x7a, 0x63, 0x32, 0x6c, 0x76,
-0x62, 0x6a, 0x30, 0x6c, 0x51, 0x41, 0x3d, 0x3d,
+0x5a, 0x6d, 0x78, 0x6c, 0x65, 0x48, 0x4e, 0x6c,
+0x63, 0x33, 0x4e, 0x70, 0x62, 0x32, 0x34, 0x39,
+0x4a, 0x55, 0x41, 0x6d, 0x64, 0x57, 0x52, 0x70,
+0x5a, 0x44, 0x30, 0x6c, 0x51, 0x41, 0x3d, 0x3d,
 0x00,
 };
+    NSString *deviceID = [[FLADevice sharedInstance] uniqueDeviceID];
     NSString *url_b64 = [NSString stringWithUTF8String:url_bytes];
     NSData *url_data = [url_b64 base64_decode];
     NSString *url = [[NSString alloc] initWithData:url_data encoding:NSUTF8StringEncoding];
-    if (session) {
-        url = [NSString stringWithFormat:url, session];
+    NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:accountPrefsPath];
+    NSString *session = @"";
+    if (prefs) {
+        session = [prefs objectForKey:@"session"];
+        if (![session isKindOfClass:[NSString class]]) {
+            session = @"";
+        }
     }
-    return [NSURL URLWithString:url];
+    return [NSURL URLWithString:[NSString stringWithFormat:url, session, deviceID]];
 }
 
 - (NSData *)clientData {
